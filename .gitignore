@@ -1,0 +1,13 @@
+# Python virtualenvs (CAD tooling)
+**/.venv/
+__pycache__/
+*.pyc
+
+# Build output
+build/
+*.o
+*.obj
+
+# Editor/OS cruft
+.DS_Store
+Thumbs.db
