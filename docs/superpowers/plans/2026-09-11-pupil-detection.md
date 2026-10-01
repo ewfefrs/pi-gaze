@@ -1,5 +1,8 @@
 # Pupil Detection (Module 1) Implementation Plan
 
+> **SUPERSEDED (2026-09-25):** not executed. Replaced by the dependency-free implementation in
+> `software/` — see `docs/superpowers/specs/2026-09-25-pigaze-software-design.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Detect a per-frame pupil center (x, y) for each eye from a remote, monitor-mounted IR camera, verifiable headless over SSH.

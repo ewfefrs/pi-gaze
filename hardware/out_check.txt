@@ -1,0 +1,81 @@
+
+[A] printable parts: watertight + one solid body
+  PASS  A clamp                                        watertight=True solids=1
+  PASS  A ribbon_cover                                 watertight=True solids=1
+  PASS  A pad                                          watertight=True solids=1
+  PASS  A foot                                         watertight=True solids=1
+  PASS  A knob                                         watertight=True solids=1
+  PASS  A bar                                          watertight=True solids=1
+  PASS  A bar_lid                                      watertight=True solids=1
+  PASS  A case                                         watertight=True solids=1
+  PASS  A cover                                        watertight=True solids=1
+
+[B] pairwise interference (assembled, bar at -38 deg)
+  PASS  B bar <-> bar_lid                              overlap 0.000 mm3
+  PASS  B case<->cover (stock snap fit)                INFO overlap 0.00 mm3 (original cover design)
+  PASS  B all other pairs                              no overlap
+
+[C] real Pi 5 + Active Cooler inside the modified case / cover
+  PASS  C Pi vs case (excl. PCB-on-standoff contact)   3 pts inside (437 standoff contact)
+  PASS  C Pi vs cover                                  0 pts inside
+  PASS  C tallest Pi part under the cover              top Z 21.62, cover underside 24.03
+
+[D] ghost camera ribbon (16.2 mm) along the full route
+  PASS  D ribbon: inside case -> slot -> collar -> jaw tunnel worst: clamp 0.000 mm3
+  PASS  D ribbon: bridge-top groove (under cover)      worst: clamp 0.000 mm3
+  PASS  D ribbon: free rise to the bar                 worst: clamp 0.000 mm3
+  PASS  D ribbon: through the bar floor slot (bar -38 deg) worst: clamp 0.000 mm3
+  PASS  D ribbon run under the cover vs real Pi        0 Pi points in the ribbon's path
+  PASS  K camera cable route length                    163 mm -> use the 200 mm Pi 5 camera cable (300 mm also fits, fold slack under the cover)
+
+[E] monitor fit (top edge 15 mm)
+  PASS  E monitor <-> clamp                            overlap 0.000 mm3
+  PASS  E monitor <-> pad                              overlap 0.000 mm3
+  PASS  E monitor <-> foot                             overlap 0.000 mm3
+  PASS  E monitor <-> case                             overlap 0.000 mm3
+  PASS  E monitor <-> cover                            overlap 0.000 mm3
+  PASS  E monitor <-> ribbon_cover                     overlap 0.000 mm3
+  PASS  E monitor <-> knob                             overlap 0.000 mm3
+  PASS  E front lip hangs below the monitor top        clamp min Z -41.0 (lip drop 5 mm)
+
+[F] hinge sweep -20..-48 deg
+  PASS  F bar+lid at -20 deg                           worst: - 0.000 mm3
+  PASS  F bar+lid at -30 deg                           worst: - 0.000 mm3
+  PASS  F bar+lid at -38 deg                           worst: - 0.000 mm3
+  PASS  F bar+lid at -48 deg                           worst: - 0.000 mm3
+
+[G] thumbscrew knob travel
+  PASS  G knob at Y=31 vs case/bar                     overlap 0.000 mm3
+  PASS  G knob at Y=45 vs case/bar                     overlap 0.000 mm3
+  FAIL  G finger room knob -> case                     min gap 5.8 mm
+  PASS  G thumbscrew bolt vs case/cover                
+
+[H] access: plugs, card, button
+  PASS  H RJ45 plug (down) free                        blocked 0.000 mm3
+  PASS  H USB stack 1 plug free                        blocked 0.000 mm3
+  PASS  H USB stack 2 plug free                        blocked 0.000 mm3
+  PASS  H USB-C power plug free                        blocked 0.000 mm3
+  PASS  H micro-HDMI 0 plug free                       blocked 0.000 mm3
+  PASS  H micro-HDMI 1 plug free                       blocked 0.000 mm3
+  PASS  H microSD fingernail free                      blocked 0.000 mm3
+  PASS  H power-button lever free                      blocked 0.000 mm3
+
+[I] interfaces
+  PASS  I dock hole case(-58,12.5) -> jaw nut X16      maps to X 16.00 Z -36.00
+  PASS  I dock hole case(-58,20.5) -> jaw nut X24      maps to X 24.00 Z -36.00
+  PASS  I case ribbon slot within jaw tunnel X         slot X -25.0..-8.0 / tunnel -25.5..-7.5
+  PASS  I ribbon slot straddles tunnel Y               slot Y 18.0..23.0 / tunnel 19.0..22.0
+  PASS  I hinge on the ribbon line                     hinge X -16.5
+
+[J] probes
+  PASS  J bar: compartment wall at IR height (+/-18.3,0,9) 
+  PASS  J bar: no external fins (+/-20.5,0,22)         
+  PASS  J thumbscrew nut pocket reachable from monitor side 
+  PASS  J dock 1 nut pocket reachable from monitor side 
+  PASS  J dock 2 nut pocket reachable from monitor side 
+  PASS  J ribbon tunnel open bottom->top               
+
+[K] cooling
+  PASS  K fan-grille -> monitor back air gap           15.5 mm
+
+COUNTER-MODEL FOUND 1 FAILURE(S) of 57

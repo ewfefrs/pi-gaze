@@ -1,0 +1,13 @@
+[Unit]
+Description=Pi-Gaze first-boot build and install
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=!/var/lib/pigaze-installed
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/pigaze/src/deploy/firstboot.sh
+TimeoutStartSec=40min
+
+[Install]
+WantedBy=multi-user.target

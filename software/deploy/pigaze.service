@@ -1,0 +1,23 @@
+[Unit]
+Description=Pi-Gaze eye tracker (eyes -> PC cursor through the CH9329)
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=pigaze
+Group=pigaze
+SupplementaryGroups=video dialout input gpio
+RuntimeDirectory=pigaze
+RuntimeDirectoryMode=0770
+StateDirectory=pigaze
+# IR LEDs: transistor on GPIO18 (header pin 12). Harmless if the LEDs are wired always-on.
+ExecStartPre=-+/usr/bin/pinctrl set 18 op dh
+ExecStart=/usr/local/bin/pigaze --config /etc/pigaze/pigaze.conf
+ExecStopPost=-+/usr/bin/pinctrl set 18 op dl
+Restart=always
+RestartSec=3
+Nice=-5
+
+[Install]
+WantedBy=multi-user.target

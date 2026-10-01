@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pi-Gaze control: pigaze-ctl calibrate | toggle | pause | resume
+case "$1" in
+  calibrate|toggle|pause|resume) ;;
+  *) echo "usage: pigaze-ctl calibrate|toggle|pause|resume" >&2; exit 2 ;;
+esac
+if [ ! -p /run/pigaze/control ]; then
+  echo "pigaze is not running (sudo systemctl status pigaze)" >&2
+  exit 1
+fi
+printf '%s\n' "$1" > /run/pigaze/control

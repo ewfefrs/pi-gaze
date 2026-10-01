@@ -11,3 +11,12 @@ build/
 # Editor/OS cruft
 .DS_Store
 Thumbs.db
+
+# software
+software/build-win/
+software/build/
+*.obj
+imager-write.log
+
+# Wi-Fi credentials for first boot (keep local)
+software/deploy/sdcard/network-config

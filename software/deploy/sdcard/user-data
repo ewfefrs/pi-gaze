@@ -1,0 +1,27 @@
+#cloud-config
+# Pi-Gaze first boot (Raspberry Pi OS Trixie, cloud-init). Copied to the SD card's boot partition.
+hostname: pigaze
+manage_etc_hosts: true
+timezone: Europe/Moscow
+
+users:
+  - name: pigaze
+    gecos: Pi-Gaze
+    groups: users,adm,dialout,audio,netdev,video,plugdev,input,gpio,spi,i2c,render,sudo
+    shell: /bin/bash
+    lock_passwd: true            # no password: SSH key login only (set one later with: sudo passwd pigaze)
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE5Dw/0ZlFAD1aiEeUjPijJNQYUxAmO//emnrU7T74RZ pigaze-claude
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJdHaYJbzogHMvGRVRcU2Ts5c8gS1605N1KrB+/hCtbm claude-pigaze
+
+enable_ssh: true
+ssh_pwauth: false
+
+runcmd:
+  - [systemctl, enable, --now, ssh]
+  - [bash, -c, "rm -rf /opt/pigaze/src && mkdir -p /opt/pigaze && cp -r /boot/firmware/pigaze /opt/pigaze/src"]
+  - [install, -m, "644", /opt/pigaze/src/deploy/pigaze-firstboot.service, /etc/systemd/system/pigaze-firstboot.service]
+  - [systemctl, daemon-reload]
+  - [systemctl, enable, pigaze-firstboot.service]
+  - [systemctl, start, --no-block, pigaze-firstboot.service]

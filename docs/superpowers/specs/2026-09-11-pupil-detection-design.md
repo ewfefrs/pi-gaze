@@ -1,7 +1,8 @@
 # Pi-Gaze — Module 1: Pupil Detection (design)
 
 - **Date:** 2026-09-11
-- **Status:** approved (design), pending spec review
+- **Status:** SUPERSEDED by `2026-09-25-pigaze-software-design.md` (OpenCV + toolchain does not
+  fit the 3.7 GB SD card; the IR glints make a face DNN unnecessary)
 - **Author:** Claude (with user)
 
 ## Goal
